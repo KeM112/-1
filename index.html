@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تهنئة عبد اللطيف</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 40px;
+      color: #b30059;
+      animation: fadeInDown 2s ease-out;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #333;
+      animation: fadeIn 3s ease-in;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      display: none;
+      margin-top: 20px;
+      animation: fadeInImg 1s ease-in;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background-color: #ff66a3;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+      margin-top: 25px;
+    }
+
+    button:hover {
+      background-color: #cc0052;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 1em;
+      color: #555;
+    }
+
+    /* تأثيرات */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeInImg {
+      from {opacity: 0; transform: scale(0.8);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: floatHearts 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="heartsContainer"></div>
+
+  <h1>ألف مبروك الخطوبة يا عبد اللطيف!</h1>
+  <p>نتمنى لك حياة مليئة بالحب والسعادة والفرح</p>
+  
+  <button onclick="showImage()">إظهار صورة عبد اللطيف</button>
+  <br>
+  <img id="photo" src="abdulatif.jpg" alt="صورة عبد اللطيف">
+
+  <audio id="romanticAudio" autoplay loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+    متصفحك لا يدعم الصوت.
+  </audio>
+
+  <div class="footer">تمت البرمجة والإهداء بواسطة: <strong>كامل أبو حميد</strong></div>
+
+  <script>
+    function showImage() {
+      document.getElementById('photo').style.display = 'block';
+    }
+
+    // توليد قلوب
+    const heartsContainer = document.getElementById('heartsContainer');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
